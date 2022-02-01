@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<button class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Product")';return false;">Product List</button>
+<form class="form-horizontal" id="productSave">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Add/Edit Product</legend>
+        <div id="validationMsg" class="alert alert-danger alert-dismissible fade"></div>
+        <input type="hidden" id="product_id" value="@ViewBag.ProductID" />
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_name">Product Name</label>
+            <div class="col-md-4">
+                <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" type="text" required>
+
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_category">Category</label>
+            <div class="col-md-4">
+                <select id="product_category" name="product_category" class="form-control">
+                </select>
+            </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group">
+            <input type="hidden" id="attr_id" value="" />
+            <label class="col-md-4 control-label" for="product_attribute">Attribute</label>
+            <div class="col-md-4">
+                <select id="product_attribute" name="product_attribute" class="form-control">
+                </select>
+            </div>
+        </div>
+        <!-- Textarea -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_description">Description</label>
+            <div class="col-md-4">
+                <textarea class="form-control" id="product_description" name="product_description"  required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <button id="product_save" name="product_save" class="btn btn-primary">Save</button>
+                <button class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Product")';return false;">Back to Product List</button>
+            </div>
+            
+        </div>
+    </fieldset>
+</form>
+<script src="~/js/productSave.js"></script>

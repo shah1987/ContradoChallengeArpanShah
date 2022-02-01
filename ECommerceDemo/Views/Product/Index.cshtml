@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div class="row">
+        <div class="col-lg-12 text-right">
+            <button class="btn btn-primary" onclick="location.href='@Url.Action("AddEditProduct", "Product")';return false;">Add Product</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                    <tr style="font-size:medium">
+                        <th>
+                            <b>Product Name</b>
+                        </th>
+                        <th>
+                            <b>Description</b>
+                        </th>
+                        <th>
+                            <b>Category Name</b>
+                        </th>
+                        <th>
+                            <b>Attribute Name</b>
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="gvProduct">
+                    <tr class="panel-title" style="padding-top:5px;">
+                        <td>
+                            <div id="bgNoData" class="alert-warning">No data found</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" id="pgData">
+            </ul>
+        </nav>
+    </div>
+</div>
+<div id="noDataFound" style="display:none">
+    <tr class="panel-title" style="padding-top:5px;">
+        <td>
+            <div id="bgNoData" class="alert-warning">Loading Data...</div>
+        </td>
+    </tr>
+</div>
+<script id="tmplProduct" type="text/x-jQuery-tmpl">
+    <tr>
+        <td>
+            ${ProdName}
+        </td>
+        <td>
+            ${ProdDescription}
+        </td>
+        <td>
+            ${CategoryName}
+        </td>
+        <td>
+            ${AttributeName}
+        </td>
+        <td>
+            <a href='@Url.Action("AddEditProduct", "Product")/${ProductId}'>Edit</a>
+            <a href="#"  onclick='_productDemo.DeleteProduct(${ProductId})'>Delete</a>
+        </td>
+    </tr>
+</script>
+<script id="tmplPagging" type="text/x-jQuery-tmpl">
+    <li class="page-item"><a href="#" class="page-link" id="pg${pageID}" onclick="_productDemo.SetPageIndex(${pageID})">${pageID}</a></li>
+</script>
+<div id="dialog-confirm" title="Delete Product" style="display:none">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Do you want to delete this product?</p>
+</div>
+<script src="~/js/Products.js"></script>
